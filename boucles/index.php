@@ -118,17 +118,30 @@ echo '<br><br>';
 //Créer un tableau pour les mois de l'année et affiché tous les mois de Janvier à Décembre
 //modifier et/ou remplacer les éléments ci-dessous
 echo "8.Les mois depuis le debut de l'annee : <br>";
-$mois = [];
-for ($i = 0; $i < 0; $i) {
-    echo '';
+$mois = [
+    'janvier',
+    'fevrier',
+    'mars',
+    'avril',
+    'mai',
+    'juin',
+    'juillet',
+    'aout',
+    'septembre',
+    'octobre',
+    'novembre',
+    'décembre',
+];
+for ($i = 0; $i < count($mois); $i++) {
+    echo $mois[$i] . "<br>";
 }
 echo '<br><br>';
 
 //Afficher les mois de la fin de l'année jusqu'au début de l'année
 //modifier et/ou remplacer les éléments ci-dessous
 echo "9.Les mois depuis la fin de l'annee : <br>";
-for ($i = 0; $i < 0; $i) {
-    echo '';
+for ($i = 11; $i >= 0; $i--) {
+    echo $mois[$i] . "<br>";
 }
 echo '<br><br>';
 
@@ -158,13 +171,32 @@ $college = array(
 
 echo '10.Les eleves du college : <br>';
 //ajoutez votre code ici
-echo '<br><br>';
-
 //----------------------------------------
 //Afficher le nom et prénoms des élèves de ce collège
+
+foreach ($college as $school => $student){
+    foreach ($student as $item){
+        echo $item['Nom'].' '.$item['Prenom'].'<br>';
+    };
+}
+echo '<br><br>';
 //reprenez le tableau ci-dessus, ajoutez des éléves pour la classe de troisième et réaffichez tout
+
+$college['Troisieme'] = [
+        array('Nom' => 'azert', 'Prenom' => 'yuiop'),
+        array('Nom' => 'qsdf', 'Prenom' => 'ghj'),
+        array('Nom' => 'klm', 'Prenom' => 'wxcv'),
+        array('Nom' => 'bnazer', 'Prenom' => 'poiu'),
+    ];
+
 echo '11.Les eleves du college (avec les nouveaux arrivants): <br>';
 //ajoutez votre code ici
+foreach ($college as $school => $student){
+    foreach ($student as $item){
+        echo $item['Nom'].' '.$item['Prenom'].'<br>';
+    };
+}
+
 echo '<br><br>';
 
 //----------------------------------------
@@ -206,6 +238,14 @@ $videotheque = array(
 
 echo '12.Mes films : <br>';
 //ajoutez votre code ici
+
+foreach ($videotheque as $film) {
+    echo '<strong>' . $film['nom'] . '</strong> - ' . $film['date'] . '<br> Réalisé par ' . $film['realisateur'] . '  <br>Acteurs : ';
+    foreach ($film['acteurs'] as $acteur) {
+        echo $acteur . ", ";
+    }
+    echo '<br><br>';
+}
 echo '<br><br>';
 
 //----------------------------------------
@@ -216,4 +256,47 @@ echo '<br><br>';
 
 echo '13.Mes films : <br>';
 //ajoutez votre code ici
-echo '<br><br>';
+
+$videotheque[] =
+    [
+        'nom' => 'Le cinquiéme élément',
+        'date' => 1997,
+        'realisateur' => 'Luc Besson',
+        'acteurs' => [
+            'Bruce Willis',
+            'Mila Jovovitch',
+            'Gary Oldman',
+        ],
+        'synopsis' => 'Egypte, 1914. Des extraterrestres récupèrent quatre pierres magiques. Avant de partir, 
+    les extraterrestres promettent que dans 300 ans, ils rapporteront les pierres.',
+    ]
+;
+
+$videotheque[] = [
+    'nom' => 'Matrix',
+    'date' => 1999,
+    'realisateur' => 'Les Wachowski',
+    'acteurs' => [
+        'Keanu Reeves',
+        'Carrie-Anne Moss',
+        'Laurence Fishburne',
+    ],
+    'synopsis' => "Programmeur anonyme dans un service administratif le jour, Thomas Anderson devient Neo la nuit venue.
+     Sous ce pseudonyme, il est l'un des pirates les plus recherchés du cyber-espace. À cheval entre deux mondes, Neo 
+     est assailli par d'étranges songes",
+];
+
+foreach ($videotheque as $film) {
+    echo '<strong>' . $film['nom'] . '</strong> - ' . $film['date'] . '<br> Réalisé par ' . $film['realisateur'] . '  <br>Acteurs : ';
+
+    foreach ($film['acteurs'] as $acteur) {
+        echo $acteur . ", ";
+    }
+
+    echo '<br>';
+
+    if(isset($film['synopsis'])){
+        echo "synopsis : <em>" . $film['synopsis'] . "</em><br>";
+    }
+    echo '<br>';
+}
