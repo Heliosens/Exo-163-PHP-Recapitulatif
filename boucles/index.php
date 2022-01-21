@@ -286,6 +286,21 @@ $videotheque[] = [
      est assailli par d'étranges songes",
 ];
 
+$videotheque[] = [
+    'nom' => 'Night and Day',
+    'date' => 2010,
+    'realisateur' => 'James Mangold',
+    'acteurs' => [
+        'Tom Cruise',
+        'Cameron Diaz',
+        'Paul Dano',
+    ],
+    'synopsis' =>
+        'Quand June Havens drague son charmant voisin dans un avion quittant le Kansas, elle ne sait pas qu\'elle
+         s\'embarque dans une aventure internationale.
+         L\'homme en question, Roy Miller, est un agent secret sous couverture.',
+];
+
 foreach ($videotheque as $film) {
     echo '<strong>' . $film['nom'] . '</strong> - ' . $film['date'] . '<br> Réalisé par ' . $film['realisateur'] . '  <br>Acteurs : ';
 
